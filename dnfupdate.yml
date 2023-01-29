@@ -10,4 +10,4 @@
   
   - name: Install updates
     ansible.builtin.dnf:
-      dnf: update_only autoremove=yes
+      dnf: update_only=yes autoremove=yes
