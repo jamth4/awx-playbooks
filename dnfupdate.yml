@@ -7,10 +7,10 @@
   - name: Check for updates
     ansible.builtin.dnf:
       state: latest
-      update_cache: true
+      update_cache: yes
       
   
   - name: Install updates
     ansible.builtin.dnf:
-      update_only: true
-      autoremove: true
+      update_only: yes
+      autoremove: yes
