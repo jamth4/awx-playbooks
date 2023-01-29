@@ -6,8 +6,11 @@
   tasks:
   - name: Check for updates
     ansible.builtin.dnf:
-      dnf: state=latest update_cache=yes 
+      state: latest
+      update_cache: true
+      
   
   - name: Install updates
     ansible.builtin.dnf:
-      dnf: update_only=yes autoremove=yes
+      update_only: true
+      autoremove: true
