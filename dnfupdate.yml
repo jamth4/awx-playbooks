@@ -6,6 +6,7 @@
   tasks:
   - name: Check for updates
     ansible.builtin.dnf:
+      name: '*'
       state: latest
       update_cache: yes
       
