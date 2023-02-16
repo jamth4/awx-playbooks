@@ -1,13 +1,4 @@
-- name: Run Updates on Terminal Servers then wait 7 mins
-  hosts: terminalservers
-  connection: winrm
-
-  tasks:
-    win_updates:
-      category_names:
-        - Application
-        - CriticalUpdates
-        - DefinitionUpdates
-        - SecurityUpdates
-        - Updates
-    reboot: no
+- name: Install Updates
+  ansible.windows.win_updates:
+    category_names: '*'
+    reboot: yes
