@@ -1,0 +1,12 @@
+---
+- gather_facts: true
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Install upgrade tool
+    ansible.builtin.dnf:
+      name: dnf-plugin-system-upgrade
+      state: "latest"
+  - name: run migration
+    ansible.builtin.command: sudo dnf system-upgrade download --releasever=39
