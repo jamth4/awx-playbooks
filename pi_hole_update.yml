@@ -1,0 +1,9 @@
+---
+- name: PiHole Updates
+  gather_facts: true
+  become: true
+  
+  tasks:
+  - name: run pihole up command
+    ansible.builtin.shell:
+      cmd: pihole -up
