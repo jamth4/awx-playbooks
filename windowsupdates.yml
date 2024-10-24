@@ -1,4 +1,7 @@
 - name: Install Updates
-  ansible.windows.win_updates:
-    category_names: '*'
-    reboot: yes
+
+  tasks:
+  - name: Intalling Updates
+    ansible.windows.win_updates:
+      category_names: '*'
+      reboot: yes
