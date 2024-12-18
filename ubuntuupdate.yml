@@ -2,10 +2,25 @@
 - hosts: all
   gather_facts: yes
   become: yes
-  
+
   tasks:
-  - name: Check for updates
-    apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-    
-  - name: Install updates
-    apt: upgrade=dist force_apt_get=yes
+    - name: update apt cache
+      become: true
+      become_method: sudo
+      ansible.builtin.apt:
+        upgrade: dist
+   
+    - name: check for reboot
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+        get_checksum: no
+      register: reboot_required_file
+
+    - name: Reboot the server (if required)
+      ansible.builtin.reboot:
+      when: reboot_required_file.stat.exists == true
+
+    - name: Remove dependencies
+      ansible.builtin.apt:
+        autoremove: yes
+
