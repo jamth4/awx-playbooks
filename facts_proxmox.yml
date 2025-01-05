@@ -1,0 +1,10 @@
+---
+- name: Print Message if Proxmox VM
+  hosts: all
+
+  tasks:
+    - name: print message if QEMU
+      ansible.builtin.debug:
+        msg: "This server is running {{ ansible_facts.system_vendor }}"
+      when: ansible_facts.system_vendor == "QEMU"
+    
