@@ -1,0 +1,13 @@
+---
+- name: Check OS version
+  hosts: all
+
+  tasks: 
+    - name: Check Dist Version
+      ansible.builtin.shell: cat /etc/os-release
+      register: response
+
+    - name: Print OS version
+      ansible.builtin.debug:
+        msg: "{{ response.stdout }}"
+        
