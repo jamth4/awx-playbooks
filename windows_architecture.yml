@@ -1,0 +1,13 @@
+---
+- name: Print Facts
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Print Facts
+      ansible.builtin.debug:
+        var: ansible_facts.architecture
+    - name: Print Architecture
+      ansible.builtin.debug:
+        msg: "This is a 64-bit OS"
+      when: ansible_facts.architecture == "64-bit"
