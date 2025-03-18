@@ -1,0 +1,14 @@
+---
+- name: check service status
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Check Services
+      ansible.windows.win_service:
+        name: User Manager
+      register: service_info
+    - name: print service status
+      ansible.builtin.debug:
+        msg: "Service Running"
+      when: service_info.state == "running"
