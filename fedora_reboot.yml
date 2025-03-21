@@ -13,7 +13,6 @@
         cmd: "needs-restarting -r -s"
       register: needs_restarting
       changed_when: needs_restarting.rc == 1
-      failed_when: needs_restarting.rc == 0  
     - name: do reboot if needed
       ansible.builtin.reboot:
       when: needs_restarting.rc == 1
