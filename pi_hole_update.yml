@@ -1,5 +1,6 @@
 ---
 - name: PiHole Updates
+  hosts: all
   gather_facts: true
   become: true
   
